@@ -1,2 +1,13 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+<%= form_with model: @user, url:'/users' do |f| %>
+
+  <%= f.text_field :name %>
+  
+  <%= f.file_field :image, accept: "image/*" %>
+  
+  <%= f.text_area :body %>
+  
+  <%= f.submit '投稿' %>
+  
+<% end %>
