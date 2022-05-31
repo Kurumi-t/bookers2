@@ -13,13 +13,13 @@
           <tr>
             <th>name</th>
             <th>
-              <%= @user_name %>
+              <%= @user.name %>
             </th>
           </tr>
           <tr>
             <th>introduction</th>
             <th>
-              <%= @user_introduction %>
+              <%= @user.introduction %>
             </th>
           </tr>
         </tbody>
@@ -30,8 +30,7 @@
         </a>
       </div>
       <h2 class="mt-3">New book</h2>
-      <form action="/books" method="post">
-        <%= form_with model: @book, url: '/books', method: :post do |f| %>
+      <%= form_with model: @book, url: '/books', method: :post do |f| %>
         <div class="form group">
           <h4>Title</h4>
             <%= f.text_field :title %>
@@ -43,8 +42,7 @@
         <div class="form group">
           <%= f.submit 'Create Book' %>
         </div>
-        <% end %>
-      </form>
+      <% end %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -58,7 +56,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= @books.each do |book| %>
+          <% @books.each do |book| %>
           <tr>
             <td>
               <%=link_to user_path(book.id) do %>
@@ -69,12 +67,17 @@
                 <% end %>
               <% end %>
             </td>
-            <td><%= book.title %></td>
+            <td>
+              <%=link_to book_path(book.id) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
             <td><%= book.body %></td>
             <td></td>
           </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
   </div>
 </div>
