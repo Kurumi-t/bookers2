@@ -19,12 +19,17 @@
               <% end %>
             </td>
             <td>
-              <%=link_to book_path(@book.id) do %>
+              <%=link_to book_path(@book.user.id) do %>
                 <%= @book.title %>
               <% end %>
             </td>
             <td><%= @book.body %></td>
             <td></td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Destroy", books_path, method: :delete %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

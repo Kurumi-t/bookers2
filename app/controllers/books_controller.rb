@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   def new
-    @book = Book.new
   end
   
   def create
@@ -18,6 +17,12 @@ class BooksController < ApplicationController
   def show
     @user = current_user
     @book = Book.find(params[:id])
+  end
+  
+  def destroy
+    @book = Book.find(params[:id])
+    @post_image.destroy
+    redirect_to books_path
   end
   
   def edit
