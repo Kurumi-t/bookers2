@@ -1,5 +1,5 @@
 <p id="notice"></p>
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'user_info', user: @user, book: @book %>
     
@@ -19,16 +19,24 @@
               <% end %>
             </td>
             <td>
-              <%=link_to book_path(@book.user.id) do %>
+              <%=link_to book_path(@book.id) do %>
                 <%= @book.title %>
               <% end %>
             </td>
             <td><%= @book.body %></td>
-            <td></td>
             <td>
-              <% if @book.user == current_user %>
-                <%= link_to "Destroy", books_path, method: :delete %>
-              <% end %>
+              <span class="btn btn-sm btn-success">
+                <% if @book.user == current_user %>
+                  <%= link_to "Edit", edit_book_path(@book.id) %>
+                <% end %>
+              </span>
+            </td>
+            <td>
+              <span class="btn btn-sm btn-danger">
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", books_path, method: :delete %>
+                <% end %>
+              </span>
             </td>
           </tr>
         </tbody>
