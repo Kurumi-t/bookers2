@@ -25,18 +25,14 @@
             </td>
             <td><%= @book.body %></td>
             <td>
-              <span class="btn btn-sm btn-success">
-                <% if @book.user == current_user %>
-                  <%= link_to "Edit", edit_book_path(@book.id) %>
-                <% end %>
-              </span>
+              <% if @book.user == current_user %>
+                <%= link_to("Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success") %>
+              <% end %>
             </td>
             <td>
-              <span class="btn btn-sm btn-danger">
-                <% if @book.user == current_user %>
-                  <%= link_to "Destroy", books_path, method: :delete %>
-                <% end %>
-              </span>
+              <% if @book.user == current_user %>
+                <%= link_to("Destroy", books_path, method: :delete, class: "btn btn-sm btn-danger") %>
+              <% end %>
             </td>
           </tr>
         </tbody>
